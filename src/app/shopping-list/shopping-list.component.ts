@@ -8,6 +8,7 @@ import { Ingredient } from '../shared/ingredient.model';
 	styleUrls: ['./shopping-list.component.css'],
 })
 export class ShoppingListComponent implements OnInit {
+	// Array to store the ingredients
 	ingredients: Ingredient[] = [
 		new Ingredient('Apples', 5),
 		new Ingredient('Tomato', 10),
@@ -16,4 +17,8 @@ export class ShoppingListComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {}
+
+	addIngredient(newIngredient: Ingredient) {
+		this.ingredients.push(newIngredient);
+	}
 }
