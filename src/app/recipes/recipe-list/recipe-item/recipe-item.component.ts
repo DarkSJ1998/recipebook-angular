@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Recipe } from '../../recipe.model';
+import { RecipeService } from '../../recipe.service';
 
 @Component({
 	selector: 'app-recipe-item',
@@ -12,13 +13,20 @@ export class RecipeItemComponent implements OnInit {
 	@Input() recipe: Recipe;
 
 	// Event Emitter which the Parent calls, ie, Recipe List component to tell that an item has been clicked
-	@Output() selectRecipeFromItem = new EventEmitter<void>();
+	// Not used now
+	// @Output() selectRecipeFromItem = new EventEmitter<void>();
 
-	constructor() {}
+	constructor(private recipeService: RecipeService) {}
 
 	ngOnInit(): void {}
 
 	onSelect() {
-		this.selectRecipeFromItem.emit();
+		// Used to emit to the parent that a recipe was selected
+		// Not used now
+		// this.selectRecipeFromItem.emit();
+
+		// Used to emit the selected recipe to Service
+		// which is then received by "recipes" component
+		this.recipeService.recipeSelected.emit(this.recipe);
 	}
 }
